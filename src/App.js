@@ -15,6 +15,7 @@ class App extends React.Component {
       actions: []
     };
     this.addAction = this.addAction.bind(this);
+    this.deleteAction = this.deleteAction.bind(this);
   }
 
   addAction(action){
@@ -25,6 +26,12 @@ class App extends React.Component {
     ))
   }
 
+  deleteAction(title){
+    this.setState(state => ({
+      actions: state.actions.filter(a => a.title != title)
+    }))
+  }
+
    render(){
     return (
       <div className="App container">
@@ -32,7 +39,7 @@ class App extends React.Component {
           <TodoForm submit={this.addAction}/>
         </div>
         <div>
-           <TodoList todoList={this.state.actions}/>
+           <TodoList delete={this.deleteAction} todoList={this.state.actions}/>
         </div>
       </div>
     );

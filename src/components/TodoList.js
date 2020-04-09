@@ -6,7 +6,7 @@ export class TodoList extends React.Component{
         let currentTodo = this.props.todoList.length == 0?
             <h1>All DONE!</h1>
             : this.props.todoList.map(todo =>{
-                return <TodoElement action={todo}/>
+                return <TodoElement deleteElement={this.props.delete} action={todo}/>
             });
         return (
             <div className="todo-container">
